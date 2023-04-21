@@ -79,4 +79,16 @@ mod tests {
         let solution = SolvedCircuit::from(Circuit::new(12.0, Node::Voltameter("lable")));
         println!("{}", solution);
     }
+
+    #[test]
+    fn voltameter_and_ammeter() {
+        let solution = SolvedCircuit::from(Circuit::new(
+            12.0,
+            Node::Series(vec![
+                Node::Parallel(vec![Node::Resistor(1.0), Node::Voltameter("V")]),
+                Node::Ammeter("A"),
+            ]),
+        ));
+        println!("{}", solution);
+    }
 }
